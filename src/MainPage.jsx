@@ -42,11 +42,12 @@ const MainPage = ({fetchWithID}) => {
         fetchData()
     },[])
     
+    console.log(data)
   
   return (
      <div className="flex w-full  mx-auto space-x-5 overflow-x-auto bg-slate-200 px-5 py-0 md:py-2">
       
-         {data.map((obj)=>{
+         {data?.map((obj)=>{
             const imgSrc = CITY_IMAGES[obj.city] || "/assets/placeholder.png";
            return(
              <div key={obj.locationId} onClick={()=>fetchWithID(obj.locationId)} className="w-50 p-2 md:p-4 h-28 md:h-30 font-bold text-sm md:text-lg cursor-pointer flex flex-col">
