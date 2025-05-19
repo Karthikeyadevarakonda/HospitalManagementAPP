@@ -13,7 +13,7 @@ const Navbar = () => {
         </div>
 
         <div className='md:hidden'>
-         <FaBars size={openMenu ? 16 : 24 } color='white' onClick={()=>setOpenMenu(!openMenu)}/>
+         <FaBars size={16} color='white' onClick={()=>setOpenMenu(!openMenu)}/>
         </div>
 
       
