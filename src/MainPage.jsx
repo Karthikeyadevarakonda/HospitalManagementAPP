@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import axios from "axios";
 
 import chennaiImg from './assets/chennai.png';
-import bangaloreImg from './assets/banglore.png';
+import bangaloreImg from './assets/Banglore.png';
 import hydImg from './assets/hyd.png';
 import punjabImg from './assets/punjab.png';
 import delhiImg from './assets/delhi.png';
