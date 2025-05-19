@@ -9,11 +9,11 @@ const Navbar = () => {
     <div className='flex items-center justify-between'>
 
         <div >
-            <h1 className='font-bold text-2xl '><em>MEDITRACK</em></h1>
+            <h1 className='font-bold text-lg md:text-2xl '><em>MEDITRACK</em></h1>
         </div>
 
         <div className='md:hidden'>
-         <FaBars size={24} color='white' onClick={()=>setOpenMenu(!openMenu)}/>
+         <FaBars size={openMenu ? 16 : 24 } color='white' onClick={()=>setOpenMenu(!openMenu)}/>
         </div>
 
       
@@ -27,7 +27,7 @@ const Navbar = () => {
 
       </div>
 
-      {openMenu && <ul className='md:hidden space-y-8 cursor-pointer mt-10 h-full py-10 z-10 ' >
+      {openMenu && <ul className='md:hidden space-y-8 cursor-pointer mt-5 h-full py-10 z-10 ' >
                 <li onClick={()=>setOpenMenu(!openMenu)} ><em>HOME</em></li>
                 <li onClick={()=>setOpenMenu(!openMenu)} ><em>ABOUT</em></li>
                 <li onClick={()=>setOpenMenu(!openMenu)} ><em>CONTACT</em></li>
