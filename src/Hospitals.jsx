@@ -6,7 +6,7 @@ const Hospitals = ({hospitals}) => {
   return (
     <div className="w-[100%] m-auto">
    
-     <h1 className="text-2xl text-slate-700 text-center font-bold  my-5"><em>{"Hospitals in "+hospitals.city}</em> </h1>
+    {hospitals?.city === undefined ? " " :<h1 className="text-2xl text-slate-700 text-center font-bold  my-5"><em>{"Hospitals in "+hospitals?.city}</em> </h1>}
      <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-0 gap-y-5 md:gap-y-3 place-items-center mt-5 px-5 mb-10">
        
 
