@@ -51,7 +51,7 @@ const MainPage = () => {
   {Array.from({ length: 10 }).map((_, index) => (
     <div
       key={index}
-      className="min-w-[100px] md:w-48 p-2 md:p-4 h-26 md:h-30 cursor-pointer flex flex-col animate-pulse bg-gray-400 rounded-md"
+      className="min-w-[100px] md:w-48 p-2 md:p-4 h-24 md:h-30 cursor-pointer flex flex-col animate-pulse bg-gray-400 rounded-md"
     >
       <div className=" mt-2 bg-gray-400 rounded" />
     </div>
