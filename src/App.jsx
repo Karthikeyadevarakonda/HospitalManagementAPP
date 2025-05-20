@@ -1,30 +1,34 @@
 import Navbar from "./Components.jsx/Navbar"
 import Hospitals from "./Hospitals";
 import MainPage from "./MainPage"
-import { useState } from "react";
-import axios from "axios";
+import Doctors from "./Doctors";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const App = () => {
 
-  const [hospitals,setHospitals] = useState([]);
+  // const [hospitals,setHospitals] = useState([]);
 
-     const fetchWithID = async (id)=>{
-       let locationId = id;
-        try{
-          const response =  await axios.get(`https://spring-boot-hospital-management-api.onrender.com/locations/id/${locationId}`)
-          setHospitals(response.data)
-        }catch(err){
-            console.error("ERR IN FETCH : ",+err)
-        }
-    }
+  //    const fetchWithID = async (id)=>{
+  //      let locationId = id;
+  //       try{
+  //         const response =  await axios.get(`https://spring-boot-hospital-management-api.onrender.com/locations/id/${locationId}`)
+  //         setHospitals(response.data)
+  //       }catch(err){
+  //           console.error("ERR IN FETCH : ",err)
+  //       }
+  //   }
 
-
+  //   console.log(hospitals)
+     
   return (
-    <div>
-        <Navbar/>
-        <MainPage fetchWithID={fetchWithID} />
-        <Hospitals hospitals={hospitals} />
-    </div>
+    <BrowserRouter>
+    <Navbar/>
+    <Routes>
+        <Route path="/" element={<MainPage/>}/>
+        <Route path="/hospitals/:id" element={<Hospitals />} />
+        <Route path="/doctors" element={<Doctors/>}/>
+    </Routes>
+    </BrowserRouter>
   )
 }
 

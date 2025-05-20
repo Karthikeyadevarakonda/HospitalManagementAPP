@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import chennaiImg from './assets/chennai.png';
 import bangaloreImg from './assets/Banglore.png';
@@ -25,9 +26,9 @@ import kadapaImg from './assets/kadapa.png';
   Kadapa: kadapaImg,
 };
 
-const MainPage = ({fetchWithID}) => {
+const MainPage = () => {
     const [data,setData] = useState([]);
-   
+    const navigate = useNavigate()
 
     const fetchData = async ()=>{
         try{
@@ -43,14 +44,37 @@ const MainPage = ({fetchWithID}) => {
     },[])
     
     console.log(data)
+
+   if (data.length === 0) {
+  return (
+    <div className="flex w-full mx-auto space-x-5 overflow-x-auto bg-slate-200 px-5 py-2 md:py-4">
+  {Array.from({ length: 10 }).map((_, index) => (
+    <div
+      key={index}
+      className="min-w-[100px] md:w-48 p-2 md:p-4 h-26 md:h-30 cursor-pointer flex flex-col animate-pulse bg-gray-400 rounded-md"
+    >
+      <div className=" mt-2 bg-gray-400 rounded" />
+    </div>
+  ))}
+</div>
+
+  );
+}
   
   return (
      <div className="flex w-full  mx-auto space-x-5 overflow-x-auto bg-slate-200 px-5 py-0 md:py-2">
       
          {data?.map((obj)=>{
             const imgSrc = CITY_IMAGES[obj.city] || "/assets/placeholder.png";
+          
+             function handleClick(id) {
+                 console.log(id)
+                  navigate(`/hospitals/${id}`); 
+                 }
+
+
            return(
-             <div key={obj.locationId} onClick={()=>fetchWithID(obj.locationId)} className="w-50 p-2 md:p-4 h-28 md:h-30 font-bold text-sm md:text-lg cursor-pointer flex flex-col">
+             <div key={obj.locationId} onClick={()=>handleClick(obj.locationId)} className="w-50 p-2 md:p-4 h-28 md:h-30 font-bold text-sm md:text-lg cursor-pointer flex flex-col">
                 <h1 className=" text-slate-900">{obj.city}</h1>
              <img src={imgSrc} alt="" className=" h-14 mt-2 " />
             </div>
