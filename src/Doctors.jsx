@@ -1,19 +1,27 @@
 
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { FaStar } from 'react-icons/fa';
 
 const Doctors = () => {
     const location = useLocation();
     const doctors = location.state?.doctors;
+    const navigate = useNavigate()
    
     console.log("OUR DOCTS:",doctors)
+
+     function handleClick(obj){
+        navigate('/eachDoctors',{state:{eachDoctor:obj}})
+       }
+
    return (
     
     <div className='mx-2 my-2 md:grid sm:grid-cols-2 md:grid-cols-3  md:gap-x-3 '>
       {doctors.map((obj)=>{
+       
+    
         return(
             
-            <div className='flex w-full h-40 md:h-50 shadow bg-white mt-4 rounded-md'  style={{background: '#f2f3f7',boxShadow: '0.6em 0.6em 1.2em #d2dce9, -0.5em -0.5em 1em #ffffff',borderRadius: '20px', }}>
+            <div key={obj.doctorId} onClick={()=>handleClick(obj)} className='flex w-full h-40 md:h-50 shadow bg-white mt-4 rounded-md'  style={{background: '#f2f3f7',boxShadow: '0.6em 0.6em 1.2em #d2dce9, -0.5em -0.5em 1em #ffffff',borderRadius: '20px', }}>
                 <div className=' pl-2 py-2 md:pl-5 w-[120px] md:w-[140px] flex justify-center items-center flex-col'>
                     <img src={obj.doctorImage} alt="" className='rounded-2xl w-full' />
                     <p className="flex items-center space-x-2 text-md md:text-md">
