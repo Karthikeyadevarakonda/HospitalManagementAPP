@@ -7,21 +7,7 @@ import EachDoctors from "./EachDoctors";
 
 const App = () => {
 
-  // const [hospitals,setHospitals] = useState([]);
-
-  //    const fetchWithID = async (id)=>{
-  //      let locationId = id;
-  //       try{
-  //         const response =  await axios.get(`https://spring-boot-hospital-management-api.onrender.com/locations/id/${locationId}`)
-  //         setHospitals(response.data)
-  //       }catch(err){
-  //           console.error("ERR IN FETCH : ",err)
-  //       }
-  //   }
-
-  //   console.log(hospitals)
-     
-  return (
+    return (
     <BrowserRouter>
     <Navbar/>
     <Routes>
