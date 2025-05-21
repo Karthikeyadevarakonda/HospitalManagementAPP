@@ -12,9 +12,6 @@ import nelloreImg from './assets/nellore.png';
 import gunturImg from './assets/guntur.png';
 import keralaImg from './assets/kerala.png';
 import kadapaImg from './assets/kadapa.png';
-import front from './assets/front.jpg';
-import phone from './assets/phone.svg';
-import undraw from './assets/undraw_medicine_hqqg.svg';
 import chat from './assets/chat1.png';
 
 const CITY_IMAGES = {
@@ -66,14 +63,31 @@ const MainPage = () => {
 
 
   const heading1 = "Welcome to Our Hospital Locator";
-  const text1 =
-    "Find the best hospitals in your city with easy access to all locations.";
+  const text1 ="Find the best hospitals in your city with easy access to all locations.";
   
+  const DataDiv = ()=>{
+    return(
+     <div className="p-5 md:flex md:justify-evenly md:items-center md:h-80 fade-in">
+       <div>
+         <h3 className="text-xl md:text-3xl font-semibold mb-2">{heading1}</h3>
+         <p className="mb-4 text-gray-700 md:text-xl">{text1}</p>
+         <h4 className="hidden md:block font-medium mb-2 md:text-2xl">Why Choose Us?</h4>
+         <p className="hidden md:block text-gray-700 text-xl">
+           We provide verified hospital information and seamless navigation to
+           healthcare facilities.
+         </p>
+       </div>
+       <div className="py-5 px-0 md:p-4 md:pb-3 md:mt-5 md:w-[40%]">
+         <img src={chat} alt="Phone" className="rounded-2xl" />
+       </div>
+      </div>
+    )
+  }
 
-  return (
-    <div>
+  const TopDiv = () =>{
+    return(
       <div className="flex w-full mx-auto space-x-5 overflow-x-auto bg-slate-200 px-5 py-0 md:py-2">
-        {data?.map((obj) => {
+         {data?.map((obj) => {
           const imgSrc = CITY_IMAGES[obj.city] || "/assets/placeholder.png";
 
           function handleClick(id) {
@@ -82,27 +96,20 @@ const MainPage = () => {
           }
 
           return (
-            <div
-              key={obj.locationId}
-              onClick={() => handleClick(obj.locationId)}
-              className="w-50 p-2 md:p-4 h-28 md:h-30 font-bold text-sm md:text-lg cursor-pointer flex flex-col"
-            >
+            <div key={obj.locationId} onClick={() => handleClick(obj.locationId)} className="w-50 p-2 md:p-4 h-28 md:h-30 font-bold text-sm md:text-lg cursor-pointer flex flex-col">
               <h1 className="text-slate-900">{obj.city}</h1>
               <img src={imgSrc} alt="" className="h-14 mt-2" />
-            </div>
-          );
-        })}
-      </div>
+            </div>);
+             })}
+    </div>
 
-      <div className="p-5">
-        <div>
-          <h3 className="text-xl font-semibold mb-2">{heading1}</h3>
-          <p className="mb-4 text-gray-700">{text1}</p>
-        </div>
-        <div className="py-5 px-5 md:p-4 md:pb-5 md:h-44 md:w-[40%]">
-          <img src={chat} alt="Phone" className="rounded-2xl" />
-        </div>
-      </div>
+    )
+  }
+
+  return (
+    <div>
+    <TopDiv/> 
+    <DataDiv/>
     </div>
   );
 };
