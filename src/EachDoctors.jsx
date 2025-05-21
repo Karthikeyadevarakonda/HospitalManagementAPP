@@ -28,7 +28,7 @@ const EachDoctors = () => {
     </div>
 
     <div className="pt-4">
-      <span className="text-lg"><em>DOCTOR :</em> </span> <span className='text-lg md:text-xl font-bold truncate'><em> {eachDoctor.doctorName}</em></span>
+      <span className="text-lg"><em>DOCTOR :</em> </span> <span className='text-lg md:text-xl font-bold truncate pr-2'><em> {eachDoctor.doctorName}</em></span>
        <p className='text-lg text-gray-800 font-semibold'><em>{"Specialist in : "+eachDoctor.specialization}</em></p>
        <p className='text-md text-slate-900 truncate'><em>{"ConsultationFee : "+parseInt(eachDoctor.consultationFee) +"/-"}</em></p>
                           
