@@ -5,6 +5,7 @@ import Doctors from "./Doctors";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import EachDoctors from "./EachDoctors";
 import Payment from "./Payment";
+import Success from "./Success";
 
 const App = () => {
 
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/doctors" element={<Doctors/>}/>
         <Route path="/eachDoctors" element={<EachDoctors/>}/>
         <Route path="/payment" element={<Payment/>}/>
+        <Route path="/success" element={<Success/>}/>
     </Routes>
     </BrowserRouter>
   )
