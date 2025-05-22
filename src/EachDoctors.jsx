@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { FaStar } from 'react-icons/fa';
 
 
@@ -6,6 +6,17 @@ const EachDoctors = () => {
     const location = useLocation()
     const eachDoctor = location.state?.eachDoctor;
     console.log("EACH MAN",eachDoctor)
+   
+    const navigate = useNavigate();
+
+    function handleClick(){
+       if(eachDoctor.isAvailable){
+           navigate('/payment',{state:{doctor:eachDoctor}})
+       }else{
+        alert("DOCTOR IS CURRENTLY UNAVAILABLE")
+       }   
+    }
+    
 
   return (
     <div className="w-full md:pl-10">
@@ -28,6 +39,7 @@ const EachDoctors = () => {
     </div>
 
     <div className="pt-4 md:pb-5">
+
       <span className="text-lg md:text-xl "><em>DOCTOR :</em> </span> <span className='text-lg md:text-xl font-bold truncate pr-2 '><em> {eachDoctor.doctorName}</em></span>
        <p className='text-lg md:text-xl  text-gray-800 font-semibold'><em>{"Specialist in : "+eachDoctor.specialization}</em></p>
        <p className='text-md md:text-xl text-slate-900 truncate'><em>{"ConsultationFee : "+parseInt(eachDoctor.consultationFee) +"/-"}</em></p>
@@ -53,8 +65,11 @@ const EachDoctors = () => {
 
 
       <div className="m-auto w-[80%]">
-      <button className="text-white px-2 py-2 rounded-md mt-5 bg-green-800 font-bold "><em>BOOK APPOINTMENT</em></button>
-       </div>
+        <button onClick={()=>handleClick()} className={`text-white px-2 py-2 rounded-md mt-5  ${eachDoctor.isAvailable ? 'bg-green-700' : 'bg-red-500' }  font-bold `}>
+          <em>{eachDoctor.isAvailable ? 'BOOK APPOINTMENT' : 'UNAVAILABLE ' }</em>
+        </button>
+     </div>
+
     </div>
     
     </div>
