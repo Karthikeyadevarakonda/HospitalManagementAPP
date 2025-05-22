@@ -31,6 +31,12 @@ const MainPage = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
+
+    function handleClick(obj) {
+            // console.log(id);
+            navigate('/hospitals',{state:{hospitals:obj}});
+          }
+
   const fetchData = async () => {
     try {
       const response = await axios.get(
@@ -90,13 +96,13 @@ const MainPage = () => {
          {data?.map((obj) => {
           const imgSrc = CITY_IMAGES[obj.city] || "/assets/placeholder.png";
 
-          function handleClick(id) {
-            console.log(id);
-            navigate(`/hospitals/${id}`);
-          }
+          // function handleClick(id) {
+          //   console.log(id);
+          //   navigate(`/hospitals/${id}`);
+          // }
 
           return (
-            <div key={obj.locationId} onClick={() => handleClick(obj.locationId)} className="w-50 p-2 md:p-4 h-28 md:h-30 font-bold text-sm md:text-lg cursor-pointer flex flex-col">
+            <div key={obj.locationId} onClick={() => handleClick(obj)} className="w-50 p-2 md:p-4 h-28 md:h-30 font-bold text-sm md:text-lg cursor-pointer flex flex-col">
               <h1 className="text-slate-900">{obj.city}</h1>
               <img src={imgSrc} alt="" className="h-14 mt-2" />
             </div>);

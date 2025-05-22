@@ -1,24 +1,13 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom"
-import axios from "axios";
+
+import { useLocation, useNavigate } from "react-router-dom"
+
 
 const Hospitals = () => {
 
   const navigate = useNavigate();
-  const {id} = useParams()
-  const [hospitals,setHospitals] = useState([])
-
-  useEffect(()=>{
-    async function fetchData() {
-      try{
-          const response =  await axios.get(`https://spring-boot-hospital-management-api.onrender.com/locations/id/${id}`)
-          setHospitals(response.data)
-        }catch(err){
-            console.error("ERR IN FETCH : ",err)
-        }
-      }
-      fetchData()
-  },[id])
+  const location = useLocation();
+  const hospitals = location.state?.hospitals;
+  
 
   if (!hospitals?.hospitals) {
     return <div className="text-center mt-20 text-gray-500 text-lg">Loading hospitals...</div>;
