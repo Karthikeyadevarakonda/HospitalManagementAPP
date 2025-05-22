@@ -61,7 +61,7 @@ const Payment = () => {
     <p className="font-bold text-md pl-5 pt-3">{"FEE : "+parseInt(doctor.consultationFee) +"/-"}</p>
 
     <div className="m-auto w-[70%] mt-5 ">
-     <button onClick={handleClick} className="px-10 py-2 bg-blue-400 text-white rounded-md hover:bg-blue-300"><em>MAKE PAYMENT</em></button>
+     <button onClick={handleClick} className="px-10 py-2 bg-blue-400 text-white text-sm font-bold rounded-md hover:bg-blue-300"><em>MAKE PAYMENT</em></button>
     </div>
 </div>
   )
