@@ -1,16 +1,48 @@
-
-import { useLocation, useNavigate } from "react-router-dom"
-
+// import { useEffect, useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom"
+// import axios from "axios";
 
 const Hospitals = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
   const hospitals = location.state?.hospitals;
-  
+
+  //if we have huge data use this technique pass the id via params and make fetch calls 
+  // const {id} = useParams()
+  // const [hospitals,setHospitals] = useState([])
+
+  // useEffect(()=>{
+  //   async function fetchData() {
+  //     try{
+  //         const response =  await axios.get(`https://spring-boot-hospital-management-api.onrender.com/locations/id/${id}`)
+  //         setHospitals(response.data)
+  //       }catch(err){
+  //           console.error("ERR IN FETCH : ",err)
+  //       }
+  //     }
+  //     fetchData()
+  // },[id])
+
+
 
   if (!hospitals?.hospitals) {
-    return <div className="text-center mt-20 text-gray-500 text-lg">Loading hospitals...</div>;
+    return (
+     <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-0 gap-y-5 md:gap-y-8 place-items-center mt-5 px-5 mb-10">
+        {Array.from({ length: 10 }).map((_, index) => (
+          <div key={index}
+            className="w-[270px] h-[300px] mt-2 md:w-48 p-4 md:p-4  md:h-30 cursor-pointer animate-pulse bg-gray-300 rounded-lg"
+          >
+           <div className='bg-gray-400 w-full h-44 rounded-2xl'></div>
+           <div className='py-3 px-1 space-y-2.5'>
+            <p className='w-full h-4 bg-slate-400 rounded-md'></p>
+            <p className='w-full h-4 bg-slate-400 rounded-md'></p>
+            <p className='w-full h-4 bg-slate-400 rounded-md'></p>
+           </div>
+          </div>
+        ))}
+      </div>
+    );
   }
 
   return (

@@ -1,13 +1,24 @@
 
 import { useLocation, useNavigate } from 'react-router-dom'
 import { FaStar } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
+
 
 const Doctors = () => {
+
     const location = useLocation();
-    const doctors = location.state?.doctors;
     const navigate = useNavigate()
+    const [doctors, setDoctors] = useState(null);
    
-    console.log("OUR DOCTS:",doctors)
+
+   useEffect(() => {
+    const timer = setTimeout(() => {
+      setDoctors(location.state?.doctors || []);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [location.state]);
+
 
      function handleClick(obj){
         navigate('/eachDoctors',{state:{eachDoctor:obj}})
@@ -44,10 +55,31 @@ const Doctors = () => {
      }  
 
 
+const Shimmer = ()=>{
+    return (
+      <div className='mx-2 my-2 md:grid sm:grid-cols-2 md:grid-cols-3  md:gap-x-3 '>
+        {Array.from({ length: 10 }).map((_, index) => (
+          <div key={index}
+            className="min-w-[100px] mt-2 md:w-48 p-2 md:p-4 h-24 md:h-30 cursor-pointer flex animate-pulse bg-gray-300 rounded-lg"
+          >
+           <div className='bg-slate-400 w-[40%] rounded-2xl'></div>
+           <div className='flex-1/2 p-3 space-y-2.5'>
+            <p className='w-full h-3 bg-gray-400 rounded-xl'></p>
+            <p className='w-full h-3 bg-gray-400 rounded-xl'></p>
+            <p className='w-full h-3 bg-gray-400 rounded-xl'></p>
+           </div>
+          </div>
+        ))}
+      </div>
+
+    );
+}
+    
+
 
    return (
     <>
-    {doctors && doctors.length !== 0 ? <AllDoctors/>:"LOADING...." }  
+    {doctors && doctors.length !== 0 ? <AllDoctors/>:<Shimmer/> }  
     </>
     
   )
