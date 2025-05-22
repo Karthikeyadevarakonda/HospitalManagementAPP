@@ -13,12 +13,10 @@ const Doctors = () => {
         navigate('/eachDoctors',{state:{eachDoctor:obj}})
        }
 
-   return (
-    
+ const AllDoctors =()=>{
+   return(
     <div className='mx-2 my-2 md:grid sm:grid-cols-2 md:grid-cols-3  md:gap-x-3 '>
       {doctors.map((obj)=>{
-       
-    
         return(
             
             <div key={obj.doctorId} onClick={()=>handleClick(obj)} className='flex w-full h-40 md:h-50 shadow bg-white mt-4 rounded-md'  style={{background: '#f2f3f7',boxShadow: '0.6em 0.6em 1.2em #d2dce9, -0.5em -0.5em 1em #ffffff',borderRadius: '20px', }}>
@@ -33,19 +31,25 @@ const Doctors = () => {
                     <p className='text-lg text-gray-800 font-semibold truncate whitespace-nowrap overflow-hidden text-ellipsis'>{obj.specialization}</p>
                     <p className='text-md text-gray-600 truncate'>{"ConsultationFee : "+parseInt(obj.consultationFee)}</p>
                     
-                    
-
                      <span className="flex items-center space-x-1 text-black text-lg font-medium">
                        <FaStar size={22} className="text-amber-500" />
                        <span>{obj.rating}</span>
-                     </span>
-
-                   
+                     </span>     
                 </div>
             </div>
         )
       })}
     </div>
+         )
+     }  
+
+
+
+   return (
+    <>
+    {doctors && doctors.length !== 0 ? <AllDoctors/>:"LOADING...." }  
+    </>
+    
   )
 }
 
