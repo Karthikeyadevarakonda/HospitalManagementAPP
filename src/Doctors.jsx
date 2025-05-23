@@ -1,33 +1,53 @@
 
 import { useLocation, useNavigate } from 'react-router-dom'
 import { FaStar } from 'react-icons/fa';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { FaFire } from "react-icons/fa6";
+import { FaSortAmountDown } from "react-icons/fa";
+import { MdEventAvailable } from "react-icons/md";
+
 
 
 const Doctors = () => {
 
     const location = useLocation();
     const navigate = useNavigate()
-    const [doctors, setDoctors] = useState(null);
-   
+    const doctorsData = location.state?.doctors;
+    const [doctors,setDoctors] = useState(doctorsData)
 
-   useEffect(() => {
-    const timer = setTimeout(() => {
-      setDoctors(location.state?.doctors || []);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, [location.state]);
-
+    const [filteredData,setFilteredData] = useState(doctors)
+    
 
      function handleClick(obj){
         navigate('/eachDoctors',{state:{eachDoctor:obj}})
        }
 
+     function sortByRating(){
+      const sortedByrating = doctors.filter((obj)=>obj.rating > 4)
+      setFilteredData(sortedByrating)
+     }  
+
+     function sortByFee(){
+      const sortedByFee = doctors.filter((obj)=>obj.consultationFee <= 1100)
+      setFilteredData(sortedByFee)
+     }  
+
+      function sortByAvailable(){
+      const sortedByAvailable = doctors.filter((obj)=>obj.isAvailable)
+      setFilteredData(sortedByAvailable)
+     }  
+
  const AllDoctors =()=>{
    return(
+
+    <div>
+     <div className='w-full shadow h-15 flex items-center gap-x-1.5 gap-y-1 overflow-x-auto px-2 bg-slate-300'>
+      <button onClick={sortByRating} className='flex items-center gap-2 min-w-max px-8 h-11 bg-white text-sm rounded text-black font-bold'><FaFire color='orange' />TOP RATED</button>
+      <button onClick={sortByFee} className='flex items-center gap-2 min-w-max px-8 h-11 bg-white text-sm text-black font-bold rounded'><FaSortAmountDown size={20} color='orangered' /> SORT BY FEE</button>
+      <button onClick={sortByAvailable} className='flex items-center gap-2 min-w-max px-8 h-11 text-sm bg-white text-black font-bold rounded'><MdEventAvailable size={23} color='skyblue' /> AVAILABILITY</button>
+     </div>
     <div className='mx-2 my-2 md:grid sm:grid-cols-2 md:grid-cols-3  md:gap-x-3 '>
-      {doctors.map((obj)=>{
+      {filteredData.map((obj)=>{
         return(
             
             <div key={obj.doctorId} onClick={()=>handleClick(obj)} className='flex w-full h-40 md:h-50 shadow bg-white mt-4 rounded-md'  style={{background: '#f2f3f7',boxShadow: '0.6em 0.6em 1.2em #d2dce9, -0.5em -0.5em 1em #ffffff',borderRadius: '20px', }}>
@@ -50,6 +70,7 @@ const Doctors = () => {
             </div>
         )
       })}
+    </div>
     </div>
          )
      }  

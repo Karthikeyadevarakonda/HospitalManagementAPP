@@ -1,4 +1,5 @@
 // import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom"
 // import axios from "axios";
 
@@ -7,7 +8,28 @@ const Hospitals = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const hospitals = location.state?.hospitals;
+  const [fetchData,setFetchData] = useState([])
+  const [search,setSearch] = useState("")
 
+  useEffect(()=>{
+
+    function start(){
+      
+      const filteredData = hospitals?.hospitals.filter((obj)=>obj.hospitalName?.toLowerCase().startsWith(search.toLowerCase()));
+        
+        // const ByHospitalName = 
+      //   const BySpecialiZationName = obj.specialists?.some((spec)=>
+      //     spec.specialistsName?.toLowerCase().startsWith(search.toLowerCase())
+      //   )
+      //   return ByHospitalName || BySpecialiZationName;
+      // })
+      
+      setFetchData(filteredData)
+    }
+      start()
+  },[search,hospitals])
+ 
+  
   //if we have huge data use this technique pass the id via params and make fetch calls 
   // const {id} = useParams()
   // const [hospitals,setHospitals] = useState([])
@@ -46,15 +68,22 @@ const Hospitals = () => {
   }
 
   return (
+    <div>
+      
     <div className={`w-[100%] m-auto py-5 ${hospitals?.city === undefined ? "bg-white" : "bg-gray-100"}`}>
+
+     
    
-    {hospitals?.city === undefined ? " " :<h1 className="text-2xl text-slate-700 text-center font-bold  "><em>{"Hospitals in "+hospitals?.city}</em> </h1>}
+    {hospitals?.city === undefined ? " " :<h1 className="text-2xl text-slate-700 text-center font-bold  mb-3"><em>{"Hospitals in "+hospitals?.city}</em> </h1>}
+
+     <div className="w-[80%] m-auto ">
+        <input value={search} onChange={(e)=>setSearch(e.target.value)} type="text" className="border border-slate-800 w-full rounded outline-0 pl-5 py-0.5" placeholder="Search Hospital By Name..." />
+      </div>
+
      <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-0 gap-y-5 md:gap-y-8 place-items-center mt-5 px-5 mb-10">
        
 
-      {hospitals?.hospitals?.map((obj)=>{
-       
-
+      {fetchData.length <= 0 ? ("NO SUCH FOUND "):fetchData?.map((obj)=>{
         function handleClick(){
               navigate("/doctors", { state: { doctors: obj?.doctors } });
         }
@@ -87,6 +116,7 @@ const Hospitals = () => {
         )
       })}
     </div> 
+    </div>
     </div>
   )
 }
