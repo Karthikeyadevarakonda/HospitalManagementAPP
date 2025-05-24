@@ -2,30 +2,30 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-import chennaiImg from './assets/chennai.png';
-import bangaloreImg from './assets/Banglore.png';
-import hydImg from './assets/hyd.png';
-import punjabImg from './assets/punjab.png';
-import delhiImg from './assets/delhi.png';
-import gudurImg from './assets/gudur.png';
-import nelloreImg from './assets/nellore.png';
-import gunturImg from './assets/guntur.png';
-import keralaImg from './assets/kerala.png';
-import kadapaImg from './assets/kadapa.png';
+// import chennaiImg from './assets/chennai.png';
+// import bangaloreImg from './assets/Banglore.png';
+// import hydImg from './assets/hyd.png';
+// import punjabImg from './assets/punjab.png';
+// import delhiImg from './assets/delhi.png';
+// import gudurImg from './assets/gudur.png';
+// import nelloreImg from './assets/nellore.png';
+// import gunturImg from './assets/guntur.png';
+// import keralaImg from './assets/kerala.png';
+// import kadapaImg from './assets/kadapa.png';
 import chat from './assets/chat1.png';
 
-const CITY_IMAGES = {
-  Chennai: chennaiImg,
-  Bangalore: bangaloreImg,
-  Hyderabad: hydImg,
-  Punjab: punjabImg,
-  Delhi: delhiImg,
-  Gudur: gudurImg,
-  Nellore: nelloreImg,
-  Guntur: gunturImg,
-  Kerala: keralaImg,
-  Kadapa: kadapaImg,
-};
+// const CITY_IMAGES = {
+//   Chennai: chennaiImg,
+//   Bangalore: bangaloreImg,
+//   Hyderabad: hydImg,
+//   Punjab: punjabImg,
+//   Delhi: delhiImg,
+//   Gudur: gudurImg,
+//   Nellore: nelloreImg,
+//   Guntur: gunturImg,
+//   Kerala: keralaImg,
+//   Kadapa: kadapaImg,
+// };
 
 const MainPage = () => {
   const [data, setData] = useState([]);
@@ -40,7 +40,7 @@ const MainPage = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "https://spring-boot-hospital-management-api.onrender.com/locations/all"
+        "https://mongo-db-hospital-api-1.onrender.com/allLocations"
       );
       setData(response.data);
     } catch (err) {
@@ -94,7 +94,7 @@ const MainPage = () => {
     return(
       <div className="flex w-full mx-auto space-x-5 overflow-x-auto bg-slate-200 px-5 py-0 md:py-2">
          {data?.map((obj) => {
-          const imgSrc = CITY_IMAGES[obj.city] || "/assets/placeholder.png";
+          // const imgSrc = CITY_IMAGES[obj.city] || "/assets/placeholder.png";
 
           // function handleClick(id) {
           //   console.log(id);
@@ -104,7 +104,7 @@ const MainPage = () => {
           return (
             <div key={obj.locationId} onClick={() => handleClick(obj)} className="w-50 p-2 md:p-4 h-28 md:h-30 font-bold text-sm md:text-lg cursor-pointer flex flex-col">
               <h1 className="text-slate-900">{obj.city}</h1>
-              <img src={imgSrc} alt="" className="h-14 mt-2" />
+              <img src={obj.image} alt="" className="h-14 mt-2" />
             </div>);
              })}
     </div>
