@@ -23,7 +23,7 @@ const EachDoctors = () => {
     <div className="w-[90%] h-[100%] shadow pb-4 pl-7 md:pl-10 pt-2 mt-5 md:mb-5 mx-3.5" style={{background: '#f2f3f7',boxShadow: '0.6em 0.6em 1.2em #d2dce9, -0.5em -0.5em 1em #ffffff',borderRadius: '20px', }} >
 
     <div key={eachDoctor.doctorId} className="w-full  m-auto mt-5 flex justify-around" >
-     <img src={eachDoctor.doctorImage} alt="" className="w-[110px] md:w-[150px]  overflow-hidden rounded-full shadow"   />
+     <img src={eachDoctor.doctorImage} alt="" className="w-[120px] h-[120px] md:w-[150px] md:h-[140px] overflow-hidden rounded-full shadow"   />
      
      <div className="flex flex-col justify-center pl-4 flex-1/2 ">
        <span className="flex items-center space-x-1 text-black text-sm md:text-xl font-medium">
