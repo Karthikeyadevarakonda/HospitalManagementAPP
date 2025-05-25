@@ -2,30 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-// import chennaiImg from './assets/chennai.png';
-// import bangaloreImg from './assets/Banglore.png';
-// import hydImg from './assets/hyd.png';
-// import punjabImg from './assets/punjab.png';
-// import delhiImg from './assets/delhi.png';
-// import gudurImg from './assets/gudur.png';
-// import nelloreImg from './assets/nellore.png';
-// import gunturImg from './assets/guntur.png';
-// import keralaImg from './assets/kerala.png';
-// import kadapaImg from './assets/kadapa.png';
-import chat from './assets/chat1.png';
 
-// const CITY_IMAGES = {
-//   Chennai: chennaiImg,
-//   Bangalore: bangaloreImg,
-//   Hyderabad: hydImg,
-//   Punjab: punjabImg,
-//   Delhi: delhiImg,
-//   Gudur: gudurImg,
-//   Nellore: nelloreImg,
-//   Guntur: gunturImg,
-//   Kerala: keralaImg,
-//   Kadapa: kadapaImg,
-// };
+import chat from './assets/chat1.png';
+import globe from './assets/globe.svg'
 
 const MainPage = () => {
   const [data, setData] = useState([]);
@@ -73,11 +52,15 @@ const MainPage = () => {
   
   const DataDiv = ()=>{
     return(
-     <div className="p-5 md:flex md:justify-evenly md:items-center h-60 md:h-80 fade-in">
+     <div className="p-5 md:flex md:justify-between md:items-center h-60 md:h-80 fade-in ">
+      <h3 className="md:hidden text-xl md:text-2xl font-semibold mb-2">{heading1}</h3>
+       <div className="py-5 md:px-4 md:pb-3 md:mt-5 md:w-[45%]">
+         <img src={globe} alt="Phone" className="rounded-2xl" />
+       </div>
        <div>
-         <h3 className="text-xl md:text-3xl font-semibold mb-2">{heading1}</h3>
+        <h3 className="hidden md:block text-xl md:text-2xl font-semibold mb-2">{heading1}</h3>
          <p className="mb-4 text-gray-700 md:text-xl">{text1}</p>
-         <h4 className="hidden md:block font-medium mb-2 md:text-2xl">Why Choose Us?</h4>
+         <h4 className="hidden md:block font-medium mb-2 md:text-xl">Why Choose Us?</h4>
          <p className="hidden md:block text-gray-700 text-xl">
            We provide verified hospital information and seamless navigation to
            healthcare facilities.
@@ -102,7 +85,7 @@ const MainPage = () => {
           // }
 
           return (
-            <div key={obj.locationId} onClick={() => handleClick(obj)} className=" w-50 p-2 md:p-4 h-28 md:h-30 font-bold text-sm md:text-lg cursor-pointer flex flex-col">
+            <div key={obj._id} onClick={() => handleClick(obj)} className=" w-50 p-2 md:p-4 h-28 md:h-30 font-bold text-sm md:text-lg cursor-pointer flex flex-col">
               <h1 className="text-slate-900">{obj.city}</h1>
               <img src={obj.image} alt="" className="h-14 mt-2" />
             </div>);

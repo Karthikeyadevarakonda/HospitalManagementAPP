@@ -13,7 +13,7 @@ const Navbar = () => {
     }
 
   return (
-    <nav className="max-w-7xl mx-auto bg-[#66BB6A] text-white shadow py-4 px-8 ">
+    <nav className="max-w-7xl mx-auto bg-[#63b8ff] text-white shadow py-4 px-8 ">
     <div className='flex items-center justify-between'>
 
         <div >

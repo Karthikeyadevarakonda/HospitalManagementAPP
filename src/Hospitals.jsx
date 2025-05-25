@@ -46,7 +46,9 @@ const Hospitals = () => {
   //     fetchData()
   // },[id])
 
-
+ function handleClick(obj){
+              navigate("/doctors", { state: { doctors: obj?.doctors } });
+        }
 
   if (!hospitals?.hospitals) {
     return (
@@ -84,11 +86,9 @@ const Hospitals = () => {
        
 
       {fetchData.length <= 0 ? ("NO SUCH FOUND "):fetchData?.map((obj)=>{
-        function handleClick(){
-              navigate("/doctors", { state: { doctors: obj?.doctors } });
-        }
+       
         return(
-           <div onClick={handleClick} className="shadow-lg rounded-2xl transform hover:-translate-y-2 transition duration-300  w-[300px] h-[300px]  md:w-[280px] md:h-[310px]  hover:scale-95 overflow-hidden" style={{background: '#f2f3f7',boxShadow: '0.6em 0.6em 1.2em #d2dce9, -0.5em -0.5em 1em #ffffff',borderRadius: '20px', }} key={obj.hospitalId} >
+           <div onClick={()=>handleClick(obj)} className="shadow-lg rounded-2xl transform hover:-translate-y-2 transition duration-300  w-[300px] h-[300px]  md:w-[280px] md:h-[310px]  hover:scale-95 overflow-hidden" style={{background: '#f2f3f7',boxShadow: '0.6em 0.6em 1.2em #d2dce9, -0.5em -0.5em 1em #ffffff',borderRadius: '20px', }} key={obj._id} >
            <div className="w-full h-[150px] md:h-[181px] relative m-auto rounded-2xl overflow-hidden">
            <img src={obj.hospital_image} alt={obj.hospitalName} className="w-full h-full object-cover"/>
            <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black to-transparent"></div>
@@ -98,10 +98,10 @@ const Hospitals = () => {
             <h2 className="text-lg font-semibold truncate">{obj.hospitalName}</h2>
 
               <div className="truncate whitespace-nowrap overflow-hidden text-ellipsis  text-gray-700">
-             <span className="text-neutral-900">SPECIALISTS:</span> {obj.specialists.map((s, index) => (
-               <span key={s.specialistsId}>
+             <span className="text-neutral-900">SPECIALISTS:</span> {obj.specialists.map((s, idx) => (
+               <span key={idx}>
                  {s.specialistsName}
-                 {index !== obj.specialists.length - 1 && ', '}
+                 {idx !== obj.specialists.length - 1 && ', '}
                </span>
              ))}
             </div>

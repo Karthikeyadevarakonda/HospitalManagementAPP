@@ -20,7 +20,7 @@ const EachDoctors = () => {
 
   return (
     <div className="w-full md:pl-10">
-    <div className="w-[90%] h-[90%] shadow pb-4 pl-4 md:pl-10 pt-2 mt-5 md:mb-5 mx-3.5 " style={{background: '#f2f3f7',boxShadow: '0.6em 0.6em 1.2em #d2dce9, -0.5em -0.5em 1em #ffffff',borderRadius: '20px', }} >
+    <div className="w-[90%] h-[100%] shadow pb-4 pl-4 md:pl-10 pt-2 mt-5 md:mb-5 mx-3.5 " style={{background: '#f2f3f7',boxShadow: '0.6em 0.6em 1.2em #d2dce9, -0.5em -0.5em 1em #ffffff',borderRadius: '20px', }} >
 
     <div key={eachDoctor.doctorId} className="w-full  m-auto mt-5 flex justify-around" >
      <img src={eachDoctor.doctorImage} alt="" className="w-[110px] md:w-[150px]  overflow-hidden rounded-full shadow"   />
@@ -38,17 +38,27 @@ const EachDoctors = () => {
       
     </div>
 
-    <div className="pt-10 md:pb-5 w-full">
+    <div className="pt-6 md:pb-5 w-full">
 
-      <span className="text-lg md:text-xl "><em>DOCTOR :</em> </span> <span className='text-lg md:text-xl font-bold truncate pr-2 '><em> {eachDoctor.doctorName}</em></span>
-       <p className='text-lg md:text-xl  text-gray-800 font-semibold'><em>{"Specialist in : "+eachDoctor.specialization}</em></p>
-       <p className='text-md md:text-xl text-gray-500 truncate'><em>{+eachDoctor.doctorExperience+" YEARS OF EXPERIENCE"}</em></p>
-       <p className='text-md md:text-xl text-slate-900 truncate'><em>{"ConsultationFee : "+parseInt(eachDoctor.consultationFee) +"/-"}</em></p>
-       
-                          
-     
-       
-
+       <div className="space-y-1 md:space-y-2 text-lg md:text-xl">
+         <div className="font-medium text-slate-700">
+            <span className="text-slate-600"><em>DOCTOR:</em></span>
+            <span className="font-bold ml-2 truncate"><em>{eachDoctor.doctorName}</em></span>
+       </div>
+  
+         <p className="text-slate-800 font-semibold">
+           <em>Specialist in: {eachDoctor.specialization}</em>
+         </p>
+  
+          <p className="text-slate-600">
+            <em>{eachDoctor.doctorExperience} years of experience</em>
+          </p>
+  
+          <p className="text-slate-900 font-medium">
+            <em>Consultation Fee: ₹{parseInt(eachDoctor.consultationFee)}/-</em>
+          </p>
+      </div>
+      
        <div className="mt-3 pr-2">
         <p className="text-sm md:text-xl text-gray-600">
           <em>{ 
