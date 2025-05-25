@@ -53,14 +53,14 @@ const MainPage = () => {
   
   const DataDiv = ()=>{
     return(
-     <div className="p-5 md:flex md:justify-between md:items-center h-60 md:h-80 fade-in ">
+     <div className="px-5 md:flex md:justify-between md:items-center h-60 md:h-80 fade-in ">
       <h3 className="md:hidden text-xl md:text-2xl font-semibold mb-2">{heading1}</h3>
        <div className="py-5 md:px-4 md:pb-3 md:mt-5 md:w-[45%]">
          <img src={globe} alt="Phone" className="rounded-2xl" />
        </div>
        <div>
         <h3 className="hidden md:block text-xl md:text-2xl font-semibold mb-2">{heading1}</h3>
-         <p className="mb-4 text-gray-700 md:text-xl">{text1}</p>
+         <p className="text-gray-700 md:text-xl">{text1}</p>
          <h4 className="hidden md:block font-medium mb-2 md:text-xl">Why Choose Us?</h4>
          <p className="hidden md:block text-gray-700 text-xl">
            We provide verified hospital information and seamless navigation to

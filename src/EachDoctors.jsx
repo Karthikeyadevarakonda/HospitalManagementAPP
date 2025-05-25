@@ -19,8 +19,8 @@ const EachDoctors = () => {
     
 
   return (
-    <div className="w-full md:pl-10">
-    <div className="w-[90%] h-[100%] shadow pb-4 pl-4 md:pl-10 pt-2 mt-5 md:mb-5 mx-3.5 " style={{background: '#f2f3f7',boxShadow: '0.6em 0.6em 1.2em #d2dce9, -0.5em -0.5em 1em #ffffff',borderRadius: '20px', }} >
+    <div className="w-full md:pl-10 ">
+    <div className="w-[90%] h-[100%] shadow pb-4 pl-7 md:pl-10 pt-2 mt-5 md:mb-5 mx-3.5" style={{background: '#f2f3f7',boxShadow: '0.6em 0.6em 1.2em #d2dce9, -0.5em -0.5em 1em #ffffff',borderRadius: '20px', }} >
 
     <div key={eachDoctor.doctorId} className="w-full  m-auto mt-5 flex justify-around" >
      <img src={eachDoctor.doctorImage} alt="" className="w-[110px] md:w-[150px]  overflow-hidden rounded-full shadow"   />
@@ -58,7 +58,7 @@ const EachDoctors = () => {
             <em>Consultation Fee: ₹{parseInt(eachDoctor.consultationFee)}/-</em>
           </p>
       </div>
-      
+
        <div className="mt-3 pr-2">
         <p className="text-sm md:text-xl text-gray-600">
           <em>{ 
