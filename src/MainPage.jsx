@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import chat from './assets/chat1.png';
 import globe from './assets/globe.svg'
+import team from './assets/team.svg'
 
 const MainPage = () => {
   const [data, setData] = useState([]);
@@ -66,8 +67,8 @@ const MainPage = () => {
            healthcare facilities.
          </p>
        </div>
-       <div className="py-5 px-0 md:p-4 md:pb-3 md:mt-5 md:w-[40%]">
-         <img src={chat} alt="Phone" className="rounded-2xl" />
+        <div className="py-0 px-0 md:p-4 md:pb-3 md:mt-5 md:w-[40%]">
+         <img src={team} alt="Phone" className="rounded-2xl" />
        </div>
       </div>
     )
