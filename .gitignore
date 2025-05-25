@@ -7,18 +7,48 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+build/ # if you use create-react-app or other tools
+
+# Environment files
+.env
+.env.*.local
 *.local
 
-# Editor directories and files
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE/Editor folders and files
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# Coverage files
+coverage/
+*.lcov
+
+# Optional: logs & cache
+.cache/
+.nyc_output/
+
+# Optional: OS-specific
+ehthumbs.db
+Icon?
+Desktop.ini
