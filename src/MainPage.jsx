@@ -54,7 +54,7 @@ const MainPage = () => {
   const DataDiv = ()=>{
     return(
      <div className="px-5 md:flex md:justify-between md:items-center h-60 md:h-80 fade-in ">
-      <h3 className="mt-2 md:mt-0 md:hidden text-xl md:text-2xl font-semibold mb-2"> <em>{heading1}</em> </h3>
+      <h3 className="mt-3 md:mt-0 md:hidden text-xl md:text-2xl font-semibold mb-2"> <em>{heading1}</em> </h3>
        <div className="py-5 md:px-4 md:pb-3 md:mt-5 md:w-[45%]">
          <img src={globe} alt="Phone" className="rounded-2xl" />
        </div>
