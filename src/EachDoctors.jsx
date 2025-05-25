@@ -20,10 +20,10 @@ const EachDoctors = () => {
 
   return (
     <div className="w-full md:pl-10">
-    <div className="w-[90%] shadow pb-4 pl-4 md:pl-10 pt-2 mt-5 mb-5 mx-3.5 " style={{background: '#f2f3f7',boxShadow: '0.6em 0.6em 1.2em #d2dce9, -0.5em -0.5em 1em #ffffff',borderRadius: '20px', }} >
+    <div className="w-[90%] h-[90%] shadow pb-4 pl-4 md:pl-10 pt-2 mt-5 md:mb-5 mx-3.5 " style={{background: '#f2f3f7',boxShadow: '0.6em 0.6em 1.2em #d2dce9, -0.5em -0.5em 1em #ffffff',borderRadius: '20px', }} >
 
     <div key={eachDoctor.doctorId} className="w-full  m-auto mt-5 flex justify-around" >
-     <img src={eachDoctor.doctorImage} alt="" className="w-[100px] md:w-[150px]  overflow-hidden rounded-full shadow"   />
+     <img src={eachDoctor.doctorImage} alt="" className="w-[110px] md:w-[150px]  overflow-hidden rounded-full shadow"   />
      
      <div className="flex flex-col justify-center pl-4 flex-1/2 ">
        <span className="flex items-center space-x-1 text-black text-sm md:text-xl font-medium">
@@ -38,11 +38,13 @@ const EachDoctors = () => {
       
     </div>
 
-    <div className="pt-4 md:pb-5">
+    <div className="pt-10 md:pb-5 w-full">
 
       <span className="text-lg md:text-xl "><em>DOCTOR :</em> </span> <span className='text-lg md:text-xl font-bold truncate pr-2 '><em> {eachDoctor.doctorName}</em></span>
        <p className='text-lg md:text-xl  text-gray-800 font-semibold'><em>{"Specialist in : "+eachDoctor.specialization}</em></p>
+       <p className='text-md md:text-xl text-gray-500 truncate'><em>{+eachDoctor.doctorExperience+" YEARS OF EXPERIENCE"}</em></p>
        <p className='text-md md:text-xl text-slate-900 truncate'><em>{"ConsultationFee : "+parseInt(eachDoctor.consultationFee) +"/-"}</em></p>
+       
                           
      
        

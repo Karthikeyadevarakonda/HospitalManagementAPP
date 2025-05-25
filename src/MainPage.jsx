@@ -73,7 +73,7 @@ const MainPage = () => {
   
   const DataDiv = ()=>{
     return(
-     <div className="p-5 md:flex md:justify-evenly md:items-center md:h-80 fade-in">
+     <div className="p-5 md:flex md:justify-evenly md:items-center h-60 md:h-80 fade-in">
        <div>
          <h3 className="text-xl md:text-3xl font-semibold mb-2">{heading1}</h3>
          <p className="mb-4 text-gray-700 md:text-xl">{text1}</p>
@@ -102,7 +102,7 @@ const MainPage = () => {
           // }
 
           return (
-            <div key={obj.locationId} onClick={() => handleClick(obj)} className="w-50 p-2 md:p-4 h-28 md:h-30 font-bold text-sm md:text-lg cursor-pointer flex flex-col">
+            <div key={obj.locationId} onClick={() => handleClick(obj)} className=" w-50 p-2 md:p-4 h-28 md:h-30 font-bold text-sm md:text-lg cursor-pointer flex flex-col">
               <h1 className="text-slate-900">{obj.city}</h1>
               <img src={obj.image} alt="" className="h-14 mt-2" />
             </div>);
